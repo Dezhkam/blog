@@ -23,7 +23,7 @@ class PostsTableSeeder extends Seeder
         $faker = Factory::create();
         for($i=1;$i<=10;$i++){
             $image = 'Post_Image_' . rand(1,5) . '.jpg';
-            $date = date("Y-m-d H:i:s",strtotime("2016-07-18 08:00:00 + {$i} days"));
+            $date = date("Y-m-d H:i:s",strtotime("2022-11-9 08:00:00 + {$i} days"));
             $posts = [
                 'author_id' => rand(1,3),
                 'title'     => $faker->sentence(rand(8,12)),

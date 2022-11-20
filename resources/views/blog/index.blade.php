@@ -8,13 +8,13 @@
                 @foreach ($posts as $post)
                     <article class="post-item">
                         <div class="post-item-image">
-                            <a href="post.html">
-                                <img src="/img/{{$post->image}}" alt="">
+                            <a href="{{ route('blog.show',$post->id) }}" >
+                                <img src="/img/{{$post->image}}" alt="{{$post->title}}">
                             </a>
                         </div>
                         <div class="post-item-body">
                             <div class="padding-10">
-                                <h2><a href="post.html">{{ $post->title }}</a></h2>
+                                <h2><a href="{{ route('blog.show',$post->id) }}" >{{ $post->title }}</a></h2>
                                 <p>{{$post->excerpt}}</p>
                             </div>
 
@@ -23,12 +23,12 @@
                                     <ul class="post-meta-group">
                                         <li><i class="fa fa-user"></i><a href="#"> {{ $post->author->name }}</a></li>
                                         <li><i class="fa fa-clock-o"></i><time> {{$post->date}}</time></li>
-                                        <li><i class="fa fa-tags"></i><a href="#"> Blog</a></li>
+                                        <li><i class="fa fa-tags"></i><a href=" {{ route('blog') }} "> Blog</a></li>
                                         <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
                                     </ul>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="post.html">Continue Reading &raquo;</a>
+                                    <a href="{{ route('blog.show',$post->id)}}">Continue Reading &raquo;</a>
                                 </div>
                             </div>
                         </div>

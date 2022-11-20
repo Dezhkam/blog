@@ -35,6 +35,7 @@ class PostsTableSeeder extends Seeder
                 'body'      => $faker->paragraphs(rand(10,15),true),
                 'slug'      => $faker->slug,
                 'image'     =>  $image,
+                'category_id'=> rand(1,5),
                 'created_at' => $createdDate,
                 'updated_at' => $createdDate,
                 'published_at' => $publishedDate->addDays(4)

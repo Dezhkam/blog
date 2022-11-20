@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -21,9 +22,12 @@ class PostsTableSeeder extends Seeder
         // Insert 10 Dummy posts data
         $posts = [];
         $faker = Factory::create();
+        $date = Carbon::create(2022,10,1,9);
+        $createdDate = clone($date);
+        $publishedDate = clone($date);
         for($i=1;$i<=10;$i++){
             $image = 'Post_Image_' . rand(1,5) . '.jpg';
-            $date = date("Y-m-d H:i:s",strtotime("2022-11-9 08:00:00 + {$i} days"));
+            // $date = date("Y-m-d H:i:s",strtotime("2022-11-9 08:00:00 + {$i} days"));
             $posts = [
                 'author_id' => rand(1,3),
                 'title'     => $faker->sentence(rand(8,12)),
@@ -31,8 +35,9 @@ class PostsTableSeeder extends Seeder
                 'body'      => $faker->paragraphs(rand(10,15),true),
                 'slug'      => $faker->slug,
                 'image'     =>  $image,
-                'created_at' => $date,
-                'updated_at' => $date,
+                'created_at' => $createdDate,
+                'updated_at' => $createdDate,
+                'published_at' => $publishedDate->addDays(4)
             ];
             DB::table('Posts')->insert($posts);
         }
